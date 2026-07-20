@@ -240,13 +240,16 @@ function updateGuestName() {
 function downloadCard() {
     const card = document.getElementById('card');
     const inputVal = document.getElementById('guestNameInput').value.trim();
-    // Tạo tên file tự động theo tên khách mời
     const fileName = inputVal ? `Thu-Moi-SOL-${inputVal.replace(/\s+/g, '-')}.png` : 'Thu-Moi-SOL.png';
     
+    // Tự động cuộn lên đầu và đợi hình ảnh nạp xong hoàn toàn trước khi chụp
+    window.scrollTo(0, 0);
+
     html2canvas(card, {
         scale: 3, 
         useCORS: true,
         allowTaint: true,
+        logging: false,
         backgroundColor: '#fff5f7'
     }).then(canvas => {
         const link = document.createElement('a');
