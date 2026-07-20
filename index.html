@@ -187,7 +187,8 @@
 
 <!-- Thẻ Mời -->
 <div class="invitation-card" id="card">
-    <img class="watermark" src="479867223_933720282161405_7312904186045766334_n.jpg" alt="SOL Logo Watermark">
+    <!-- Đã sửa tên đường dẫn logo khớp chuẩn với file trên GitHub -->
+    <img class="watermark" id="watermarkImg" src="logo.jpg" alt="SOL Logo Watermark">
 
     <div class="content">
         <div class="header-title">THƯ MỜI THAM DỰ SINH NHẬT SOL 5 TUỔI</div>
@@ -226,7 +227,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// Hàm tự động đổi tên khi gõ vào ô Input
+// Tự động đổi tên khi gõ vào Input
 function updateGuestName() {
     const inputVal = document.getElementById('guestNameInput').value.trim();
     const guestElements = document.querySelectorAll('.guest-name');
@@ -236,19 +237,27 @@ function updateGuestName() {
     });
 }
 
-// Hàm tải ảnh PNG
-function downloadCard() {
+// Xử lý nạp ảnh tĩnh để chống lỗi mất Logo khi xuất ảnh bằng HTML2Canvas
+async function downloadCard() {
     const card = document.getElementById('card');
     const inputVal = document.getElementById('guestNameInput').value.trim();
     const fileName = inputVal ? `Thu-Moi-SOL-${inputVal.replace(/\s+/g, '-')}.png` : 'Thu-Moi-SOL.png';
-    
-    // Tự động cuộn lên đầu và đợi hình ảnh nạp xong hoàn toàn trước khi chụp
+    const imgEl = document.getElementById('watermarkImg');
+
     window.scrollTo(0, 0);
+
+    // Kiểm tra và ép trình duyệt chờ ảnh nạp hoàn toàn
+    if (!imgEl.complete) {
+        await new Promise(resolve => {
+            imgEl.onload = resolve;
+            imgEl.onerror = resolve;
+        });
+    }
 
     html2canvas(card, {
         scale: 3, 
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false,
         logging: false,
         backgroundColor: '#fff5f7'
     }).then(canvas => {
