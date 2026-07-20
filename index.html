@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Mời Sinh Nhật SOL 5 Tuổi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        body {
+            background-color: #f4e8eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Thanh nhập tên & thao tác */
+        .input-panel {
+            background: #ffffff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(164, 19, 60, 0.1);
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e8a5b8;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-panel label {
+            font-weight: 600;
+            color: #800f2f;
+            font-size: 14.5px;
+        }
+
+        .input-panel input {
+            padding: 10px 14px;
+            font-size: 14.5px;
+            border: 1.5px solid #e8a5b8;
+            border-radius: 8px;
+            outline: none;
+            flex: 1;
+            min-width: 180px;
+            font-family: 'Montserrat', sans-serif;
+            color: #4a121a;
+            transition: border-color 0.2s;
+        }
+
+        .input-panel input:focus {
+            border-color: #800f2f;
+        }
+
+        .download-btn {
+            padding: 10px 22px;
+            font-size: 14.5px;
+            font-weight: 600;
+            background-color: #800f2f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(128, 15, 47, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #a4133c;
+            transform: translateY(-2px);
+        }
+
+        /* Khung 600x750px chuẩn Messenger */
+        .invitation-card {
+            position: relative;
+            width: 600px;
+            height: 750px;
+            background-color: #fff5f7;
+            border: 2px solid #e8a5b8;
+            border-radius: 16px;
+            padding: 30px 35px;
+            box-shadow: 0 15px 35px rgba(164, 19, 60, 0.08);
+            box-sizing: border-box;
+            overflow: hidden;
+            color: #4a121a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 360px;
+            height: 360px;
+            opacity: 0.10;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: justify;
+            line-height: 1.45;
+            font-size: 13px;
+        }
+
+        .content p {
+            margin: 8px 0;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #800f2f;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .poem {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #a4133c;
+            font-size: 13.5px;
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e8a5b8, transparent);
+            margin: 8px auto 12px auto;
+        }
+
+        .highlight-name {
+            font-weight: 600;
+            color: #800f2f;
+        }
+
+        .event-info {
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px dashed #e8a5b8;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .event-info p {
+            margin: 3px 0;
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+
+        .footer {
+            margin-top: 12px;
+            text-align: right;
+            font-weight: 600;
+            color: #800f2f;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bảng nhập tên dành cho người dùng -->
+<div class="input-panel">
+    <label for="guestNameInput">Nhập tên khách mời:</label>
+    <input type="text" id="guestNameInput" placeholder="Ví dụ: Diệu Linh" oninput="updateGuestName()">
+    <button class="download-btn" onclick="downloadCard()">Tải thoyy</button>
+</div>
+
+<!-- Thẻ Mời -->
+<div class="invitation-card" id="card">
+    <img class="watermark" src="479867223_933720282161405_7312904186045766334_n.jpg" alt="SOL Logo Watermark">
+
+    <div class="content">
+        <div class="header-title">THƯ MỜI THAM DỰ SINH NHẬT SOL 5 TUỔI</div>
+        <div class="poem">
+            “Dù ai đi ngược về xuôi<br>
+            Tháng Tám sinh nhật, về ngồi bên SOL…”
+        </div>
+        
+        <div class="divider"></div>
+
+        <p>Thân gửi các thành viên yêu quý của đại gia đình SOL nói chung và <span class="highlight-name guest-name">KHÁCH MỜI</span> nói riêng,</p>
+        
+        <p>Dạo này cậu thế nào? Hy vọng rằng giữa những tiết học, những bài kiểm tra và lịch hoạt động bận rộn, <span class="highlight-name guest-name">KHÁCH MỜI</span> vẫn dành cho mình thật nhiều niềm vui và luôn giữ được nguồn năng lượng tích cực.</p>
+        
+        <p>Chẳng mấy chốc nữa, SOL đã chuẩn bị đón sinh nhật lần thứ 5 rồi đó. Nhìn lại chặng đường vừa qua, chúng mình nhận ra rằng điều quý giá nhất không chỉ là những sự kiện đã tổ chức hay những sản phẩm đã hoàn thành, mà còn là những con người đã cùng nhau tạo nên một mái nhà mang tên SOL.</p>
+        
+        <p>Cảm ơn <span class="highlight-name guest-name">KHÁCH MỜI</span> vì đã lựa chọn đồng hành cùng chúng mình. Mỗi ý tưởng, mỗi buổi trực, mỗi lần hỗ trợ đồng đội hay đơn giản là sự hiện diện của cậu đều góp phần làm nên một SOL ngày càng trưởng thành và gắn kết hơn.</p>
+        
+        <p>Để cùng nhau lưu giữ cột mốc đặc biệt này, chúng mình thân mời <span class="highlight-name guest-name">KHÁCH MỜI</span> tham dự <strong>Sinh nhật 5 năm thành lập CLB SOL – Speak Out Loud</strong>.</p>
+
+        <div class="event-info">
+            <p>⏰ <strong>Thời gian:</strong> 9h00 - 18h00, Thứ Bảy, ngày 08/08/2026</p>
+            <p>📍 <strong>Địa điểm:</strong> Cập nhật sau</p>
+        </div>
+
+        <p>Đây sẽ là dịp để tất cả các thế hệ thành viên cùng gặp gỡ, trò chuyện, nhìn lại hành trình 5 năm của SOL và tạo nên thật nhiều khoảnh khắc đáng nhớ bên nhau.</p>
+
+        <p>Hẹn gặp cậu vào ngày sinh nhật 5 tuổi của SOL nhé!</p>
+
+        <div class="footer">
+            Thân mến,<br>
+            <span style="font-family: 'Playfair Display', serif; font-size: 14.5px; font-weight: 700;">SOL – Speak Out Loud from HVT</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// Hàm tự động đổi tên khi gõ vào ô Input
+function updateGuestName() {
+    const inputVal = document.getElementById('guestNameInput').value.trim();
+    const guestElements = document.querySelectorAll('.guest-name');
+    
+    guestElements.forEach(el => {
+        el.textContent = inputVal !== "" ? inputVal : "KHÁCH MỜI";
+    });
+}
+
+// Hàm tải ảnh PNG
+function downloadCard() {
+    const card = document.getElementById('card');
+    const inputVal = document.getElementById('guestNameInput').value.trim();
+    // Tạo tên file tự động theo tên khách mời
+    const fileName = inputVal ? `Thu-Moi-SOL-${inputVal.replace(/\s+/g, '-')}.png` : 'Thu-Moi-SOL.png';
+    
+    html2canvas(card, {
+        scale: 3, 
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#fff5f7'
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+    });
+}
+</script>
+
+</body>
+</html>
